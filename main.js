@@ -22,8 +22,23 @@ class NovelScene extends Phaser.Scene {
   }
 
   create() {
+    // ⌨️ 鍵盤控制
     this.input.keyboard.on('keydown-RIGHT', () => this.nextPage());
     this.input.keyboard.on('keydown-LEFT', () => this.prevPage());
+
+    // 🖱️ 滑鼠控制
+    this.input.on('pointerdown', (pointer) => {
+      if (pointer.rightButtonDown()) {
+        this.prevPage();
+      } else {
+        this.nextPage();
+      }
+    });
+
+    // 🚫 屏蔽右鍵選單
+    this.game.canvas.oncontextmenu = function (e) {
+      e.preventDefault();
+    };
 
     storyText = this.add.text(50, 200, '', {
       font: '24px sans-serif',
