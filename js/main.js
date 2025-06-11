@@ -45,11 +45,11 @@ class NovelScene extends Phaser.Scene {
       e.preventDefault();
     };
 
-    storyText = this.add.text(50, 200, '', {
+    storyText = this.add.text(50, 100, '', { // 原本是 200，改為 100
       font: '24px sans-serif',
       fill: '#ffffff',
       wordWrap: { width: window.innerWidth - 100 },
-      lineSpacing: 10 // 新增行距參數，數值可依需求調整
+      lineSpacing: 10 // 行距參數
     });
 
     this.loadPage();
